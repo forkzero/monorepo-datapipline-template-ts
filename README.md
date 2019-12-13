@@ -18,6 +18,7 @@ Also:
 
 ### Tooling
 * lerna? for monorepo management
+* ? for dependency management
 * gts for typescript, linting, and code formatting defaults
 * Nodejs for server-side javascript execution
 * NPM for package management
