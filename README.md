@@ -8,6 +8,8 @@ To borrow from standardjs:
 * Catch style issues & programmer errors early
 
 Also:
+* Shared toolking: one set of tools to build, test, and deploy
+* Sane version management
 * Automated testing; local testing
 * Serverless microservices as default
 
@@ -44,3 +46,14 @@ Also:
 #### Performance Testing
 
 #### End User Testing
+
+## Commands Used to Create Repo
+Assumes nodejs and npm are already installed
+```bash
+npm install -g bolt
+npm init
+jq '. |= . + { "bolt": { "workspaces": [ "./packages/*/*" ] } }' package.json > /tmp/package.json && mv /tmp/package.json ./package.json
+npm install -g gts
+gts init
+
+
