@@ -19,14 +19,14 @@ Also:
 * Typescript
 
 ### Tooling
-* lerna? for monorepo management
+* bolt? for monorepo management
 * ? for dependency management
-* gts for typescript, linting, and code formatting defaults
+* gts for typescript, linting, and code formatting defaults?
 * Nodejs for server-side javascript execution
 * NPM for package management
 * AWS CDK for defining infrastructure as code
 * AWS Xray for observability
-* AVA for unit testing
+* Jest? for unit testing
 * Nock for mocking http
 * NYC for test coverage reporting
 * aws-sdk-js for interacting with AWS services
@@ -50,10 +50,21 @@ Also:
 ## Commands Used to Create Repo
 Assumes nodejs and npm are already installed
 ```bash
-npm install -g bolt
-npm init
-jq '. |= . + { "bolt": { "workspaces": [ "./packages/*/*" ] } }' package.json > /tmp/package.json && mv /tmp/package.json ./package.json
-npm install -g gts
+npm install -g bolt yarn
+bolt init
+
+# Add a package to the project
+mkdir -p packages/module-a
+cd packages/module-a
+bolt init
+bolt add jest typescript @types/node gts --dev
 gts init
+add "test" to package.json scripts section: "test": "jest"
 
+# Run tests on all projects
+bolt workspaces run test
 
+# Watch tests on all projects
+bolt workspaces run test -- --watch
+
+```
