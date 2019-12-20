@@ -1,0 +1,2 @@
+import { DataPipe } from '../src';
+
